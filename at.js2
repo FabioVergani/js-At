@@ -3,13 +3,15 @@ console.clear();
 "use strict";
 (function(global){
 
+ function dummy(){};
 
- var undefined, scope=global, O=scope.Object,
- CreateObject=O.create, CreateRawObject=CreateObject.bind(null),
+ var undefined,
+ opbo=function(e,p){var o=e;return o[p].bind(o);},
+ win=global,trace=opbo(win.console||{'log':dummy},'log'),
+ O=win.Object, CreateObject=O.create, CreateRawObject=CreateObject.bind(null),
  propertiesOf=O.getOwnPropertyNames, hasProperties=function(o){return propertiesOf(o).length > 0;},
  at=function (x,s,h){var p='listeners',xp=x[p],f=function(evt){var e=evt,t=e.type,i=h,o=x,m=xp;m[i]=f;i(e);o.removeEventListener(t,f);delete m[i];if(!hasProperties(m)){delete o[p];};};if(!xp){xp=x[p]=CreateRawObject(null);};x.addEventListener(s,f);},
- doc=scope.document, location=doc.location, uri=location.href, root=doc.documentElement,
- opbo=function(e,p){var o=e;return o[p].bind(o);},
+ doc=win.document, location=doc.location, uri=location.href, root=doc.documentElement,
  $query=opbo(doc,'querySelector');
 
  opbo=null;
@@ -17,96 +19,15 @@ console.clear();
  root.dataset.uri=uri;
  root.classList.add('js');//immediately!
 
- at(doc,'DOMContentLoaded',function(){console.log("DOM fully loaded and parsed");
+ //#1°
+ at(doc,'DOMContentLoaded',function(){trace("DOM fully loaded and parsed");
 
  });
 
- at(scope,'load',function(){console.log("load");
+ //#2°
+ at(win,'load',function(){trace("load");
 
  });
 
 })(window);
 //∴
-
-
-
-
-	//O.defineProperty(o,p,{configurable:true,writable:true,value:CreateRawObject(null)})
-
-/*
-Object.defineProperty(obj, 'key',{configurable:true,writable:true,value:'static'});
-console.dir( O.getOwnPropertyDescriptor(o,p));
-
-console.dir(doc.listeners);
-console.dir(scope.listeners);
-
-
-console.dir();
-console.log('');
-console.log("");
-console.log.bind(console);
-
-
-.classList.add('');
-
-(function(){})();
-
-
-
-gsArray=scope.Array, isArray=gsArray.isArray,
-
-remArray=function(m,x){var o=m;o.splice(o.indexOf(x),1);},
-array.splice( array.indexOf(item), 1 );
-array.splice(array.indexOf(5), 1);
-
-=arguments[0]
-
-var ready=
-var fired=theEvent;
-console.dir($query('#header-top >a:first-child'));
-
-().bind({'zzz':3})
-
-
-
-var query = document.querySelector.bind(document);
-var queryAll = document.querySelectorAll.bind(document);
-var fromId = document.getElementById.bind(document);
-var fromClass = document.getElementsByClassName.bind(document);
-var fromTag = document.getElementsByTagName.bind(document);
-
-*/
-
-
-/*
-function isEmpty(obj) {
-    return Object.keys(obj).length === 0;
-}
-
-function isEmptyObject(obj) {
-    var name;
-    for (name in obj) {
-        return false;
-    }
-    return true;
-}
-
-is.empty = function(value) {
-    if(is.object(value)){
-        var num = Object.getOwnPropertyNames(value).length;
-        if(num === 0 || (num === 1 && is.array(value)) || (num === 2 && is.arguments(value))){
-            return true;
-        }
-        return false;
-    } else {
-        return value === '';
-    }
-};
-
-
-function isEmptyObject( obj ) {
-    return Object.getOwnPropertyNames(obj).length === 0;
-}
-
-
-*/
