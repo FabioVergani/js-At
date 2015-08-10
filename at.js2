@@ -27,3 +27,86 @@ console.clear();
 
 })(window);
 //∴
+
+
+
+
+	//O.defineProperty(o,p,{configurable:true,writable:true,value:CreateRawObject(null)})
+
+/*
+Object.defineProperty(obj, 'key',{configurable:true,writable:true,value:'static'});
+console.dir( O.getOwnPropertyDescriptor(o,p));
+
+console.dir(doc.listeners);
+console.dir(scope.listeners);
+
+
+console.dir();
+console.log('');
+console.log("");
+console.log.bind(console);
+
+
+.classList.add('');
+
+(function(){})();
+
+
+
+gsArray=scope.Array, isArray=gsArray.isArray,
+
+remArray=function(m,x){var o=m;o.splice(o.indexOf(x),1);},
+array.splice( array.indexOf(item), 1 );
+array.splice(array.indexOf(5), 1);
+
+=arguments[0]
+
+var ready=
+var fired=theEvent;
+console.dir($query('#header-top >a:first-child'));
+
+().bind({'zzz':3})
+
+
+
+var query = document.querySelector.bind(document);
+var queryAll = document.querySelectorAll.bind(document);
+var fromId = document.getElementById.bind(document);
+var fromClass = document.getElementsByClassName.bind(document);
+var fromTag = document.getElementsByTagName.bind(document);
+
+*/
+
+
+/*
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
+
+function isEmptyObject(obj) {
+    var name;
+    for (name in obj) {
+        return false;
+    }
+    return true;
+}
+
+is.empty = function(value) {
+    if(is.object(value)){
+        var num = Object.getOwnPropertyNames(value).length;
+        if(num === 0 || (num === 1 && is.array(value)) || (num === 2 && is.arguments(value))){
+            return true;
+        }
+        return false;
+    } else {
+        return value === '';
+    }
+};
+
+
+function isEmptyObject( obj ) {
+    return Object.getOwnPropertyNames(obj).length === 0;
+}
+
+
+*/
