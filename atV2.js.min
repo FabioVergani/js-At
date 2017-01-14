@@ -1,0 +1,7 @@
+(function(w){
+ function at(a,b,c){function g(a){const e=a,h=g;e.currentTarget.removeEventListener(e.type,h);h.f(e);}const e=a,s=b;g.f=c;e.removeEventListener(s,g);e.addEventListener(s,g);}//elem,event,handler
+ at(w,'load',function(event){
+		let e=event;
+		console.dir(e);
+ });
+})(window);
