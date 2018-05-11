@@ -1,13 +1,11 @@
-//
-const at=(a,b,c)=>{
-	const f=()=>{a.removeEventListener(b,c)};
-	f(),a.addEventListener(b,c);
-	return f;
+const once=(a,b,c)=>{
+	const f=(e)=>{
+		a.removeEventListener(b,f);
+		c(e)
+	};
+	a.addEventListener(b,f)
 };
 
-/*
-const remWinLoadListener=at(window,'load',event=>{
-	remWinLoadListener('load');
-	//f(event.target);
+once(window,'click',evt=>{
+	console.dir(evt);
 });
-*/
