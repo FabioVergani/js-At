@@ -1,27 +1,33 @@
-const once=(a,b,c)=>{
-	const f=(e)=>{
-		a.removeEventListener(b,f);
-		c(e)
+console.clear();
+(w=>{
+	const at=(e,s,x)=>{//element,event,callback
+		const f=e.removeEventListener;
+		f(s,x);
+		e.addEventListener(s,x);
+		return f
+	},
+	once=(e,s,x)=>{
+		const f=o=>{
+			g(s,x);
+			x(o)
+		},
+		g=at(e,s,f);
+	},
+	d=w.document,
+	isReady=evt=>{
+		console.info('ready:%O',evt);
+		//doReadyStuff..
+	},
+	isLoad=evt=>{
+		console.info('load:%O',evt);
+		//doLoadStuff..
 	};
-	a.addEventListener(b,f)
-};
-
-once(window,'click',evt=>{
-	console.dir(evt);
-});
-
-
-/*
-const at=(e,s,x)=>{
-	const f=(o)=>{
-		e.removeEventListener(s,f);
-		x(o)
+	if(d.readyState!=='complete'){
+		once(w,'DOMContentLoaded',isReady);
+		once(w,'load',isLoad)
+	}else{
+		const o={target:d};
+		isReady(o);
+		isLoad(o)
 	};
-	e.addEventListener(s,f)
-};
-
-at(window,'click',evt=>{alert('clicked')
-	console.dir(evt);
-});
-
-*/
+})(window);
